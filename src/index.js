@@ -2,6 +2,7 @@ import fs           from 'fs';
 import winston      from 'winston';
 import MicroCache   from 'micro-cache';
 import Person       from './modules/person';
+import Entity       from './modules/entity';
 
 function readCertificate(cert = '', key = '') {
   if (cert === '' || key === '' ||
@@ -24,15 +25,20 @@ let UWPWS = {
       console: {
         colorize:    true,
         label:       'uwpws',
-        level:       options.logLevel,
+        level:       process.env.LOG_LEVEL || options.logLevel,
         prettyPrint: true
       }
     });
 
     config.log = winston.loggers.get('uwpws');
-    config.cache = new MicroCache(options.cachePath, options.logLevel);
+    config.cache = new MicroCache(
+      options.cachePath,
+      options.logLevel,
+      options.cacheExt
+    );
 
-    this.person       = new Person(config);
+    this.person = new Person(config);
+    this.entity = new Entity(config);
 
     return this;
   }

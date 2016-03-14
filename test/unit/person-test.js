@@ -75,13 +75,58 @@ describe('Person', function () {
     });
   }
 
+  let lisa = {
+    firstName: 'LISA',
+    lastName:  'SIMPSON'
+  };
+
   describe('Searching by affiliation', () => {
+    it('should find a student', (done) => {
+      lisa.isStudent = true,
+      searchByAffiliation(lisa, done);
+    });
+
+    it('should find a staff', (done) => {
+      lisa.isStaff = true,
+      searchByAffiliation(lisa, done);
+    });
+
+    it('should find faculty', (done) => {
+      lisa.isFaculty = true,
+      searchByAffiliation(lisa, done);
+    });
+
     it('should find an employee', (done) => {
-      searchByAffiliation({
-        isEmployee: true,
-        firstName:  'LISA',
-        lastName:   'SIMPSON'
-      }, done);
+      lisa.isEmployee = true,
+      searchByAffiliation(lisa, done);
+    });
+
+    it('should find a member', (done) => {
+      lisa.isMember = true,
+      searchByAffiliation(lisa, done);
+    });
+
+    it('should find an alum', (done) => {
+      lisa.isAlum = true,
+      searchByAffiliation(lisa, done);
+    });
+
+    it('should find an affiliate', (done) => {
+      lisa.isAffiliate = true,
+      searchByAffiliation(lisa, done);
+    });
+  });
+
+  describe('Searching by name', () => {
+    it('should find a student', (done) => {
+      let lisa = {
+        firstName: 'LISA',
+        lastName:  'SIMPSON'
+      };
+      uwpws.person.search(lisa, (err, response, result) => {
+        expect(result.Persons.length).to.be.above(0);
+        done(err);
+      });
     });
   });
 });
