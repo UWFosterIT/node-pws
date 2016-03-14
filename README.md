@@ -36,49 +36,57 @@ uwpws.initialize(config);
 
 Now, get a single person by regid or netid
 
-    let options = {
-      id:   'testkj1',
-      full: true
-    };
+```JavaScript
+let options = {
+  id:   'testkj1',
+  full: true
+};
 
-    uwpws.person.get(options, (err, response, result) => {
-      console.log(result);
-    });
+uwpws.person.get(options, (err, response, result) => {
+  console.log(result);
+});
+```
 
 Search for a person, see ``src/modules/person`` for all the parameters you can use and ``test/unit/person-test.js`` for implementations.
 
-  let lisa = {
-    firstName: 'LISA',
-    lastName:  'SIMPSON',
-    isFaculty: true
-  };
+```JavaScript
+let lisa = {
+  firstName: 'LISA',
+  lastName:  'SIMPSON',
+  isFaculty: true
+};
 
-  uwpws.person.search(options, (err, response, result) => {
-    console.log(result.Persons);
-  });
+uwpws.person.search(options, (err, response, result) => {
+  console.log(result.Persons);
+});
+```
 
 #### Or, search by Entity
 Notice, the Person and Entity searches are very similar, both have ``get`` and ``search`` functions.  Simply use ``uwpws.entity`` instead of ``uwpws.person``.
 
-      let options = {
-        id: 'any valid regid'
-      };
+```JavaScript
+let options = {
+  id: 'any valid regid'
+};
 
-      uwpws.entity.get(options, (err, response, result) => {
-        console.log(result);
-      });
+uwpws.entity.get(options, (err, response, result) => {
+  console.log(result);
+});
+```
 
 Or search for any entity that starts with the name of ``marc`` paging by 10 and starting on page 2.
 
-      let options = {
-        name:  'marc',
-        size:  10,
-        start: 2
-      };
+```JavaScript
+let options = {
+  name:  'marc',
+  size:  10,
+  start: 2
+};
 
-      uwpws.entity.search(options, (err, response, result) => {
-        console.log(result);
-      });
+uwpws.entity.search(options, (err, response, result) => {
+  console.log(result);
+});
+```
 
 ### Using a local cache
 
