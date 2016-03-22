@@ -32,46 +32,23 @@ let config = {
 uwpws.initialize(config);
 ```
 
-#### Then, search by Person
-
-Now, get a single person by regid or netid
+#### Then, search for a Person or Entity
+Search for a person, see ``src/modules/person`` for all the parameters you can use and ``test/unit/person-test.js`` for implementations. Notice, the Person and Entity searches are very similar, both have ``get`` and ``search`` functions.  Simply use ``uwpws.entity`` instead of ``uwpws.person``.
 
 ```JavaScript
+// Using Promises
 let options = {
-  id:   'testkj1',
-  full: true
+  id: '24CB6CD8AE3511D68CBC0004AC494FFE'
 };
 
-uwpws.person.get(options, (err, response, result) => {
-  console.log(result);
-});
-```
-
-Search for a person, see ``src/modules/person`` for all the parameters you can use and ``test/unit/person-test.js`` for implementations.
-
-```JavaScript
-let lisa = {
-  firstName: 'LISA',
-  lastName:  'SIMPSON',
-  isFaculty: true
-};
-
-uwpws.person.search(options, (err, response, result) => {
-  console.log(result.Persons);
-});
-```
-
-#### Or, search by Entity
-Notice, the Person and Entity searches are very similar, both have ``get`` and ``search`` functions.  Simply use ``uwpws.entity`` instead of ``uwpws.person``.
-
-```JavaScript
-let options = {
-  id: 'any valid regid'
-};
-
-uwpws.entity.get(options, (err, response, result) => {
-  console.log(result);
-});
+uwpws.entity.get(options)
+  .then((result) => {
+    console.log(result);
+    console.log(result.data.DisplayName);
+  }, 
+  (error) => {
+    console.log(error);
+  });
 ```
 
 Or search for any entity that starts with the name of ``marc`` paging by 10 and starting on page 2.
@@ -83,9 +60,10 @@ let options = {
   start: 2
 };
 
-uwpws.entity.search(options, (err, response, result) => {
-  console.log(result);
-});
+uwpws.entity.search(options)
+  .then((result) => {
+    console.log(result.data);
+  });
 ```
 
 ### Using a local cache
@@ -99,3 +77,11 @@ The ``cacheMode`` can be set to any one of the following modes.  This uses the `
 ### Logging
 This module uses ``winston`` for all logging.  Set an environment variable to a valid log level such as ``LOG_LEVEL=debug node yourscript.js``.
 
+## Development
+For linting, this assumes you have ``eslint`` and ``babel-eslint`` installed globally ``npm install eslint@2.x babel-eslint@next -g``
+
+Copy ``test/setup/config-sample.js`` to ``test/setup/config.js`` and edit values as needed. Use the ``npm`` commands indicated in ``package.json``.
+
+    npm build
+    npm test
+    npm lint

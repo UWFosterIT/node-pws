@@ -7,8 +7,7 @@ class Entity extends Service {
   }
 
   get(opt, cb) {
-    this._get(`entity/${opt.id}.json`, cb);
-    return;
+    return this._get(`entity/${opt.id}.json`);
   }
 
   search(opt, cb) {
@@ -21,9 +20,7 @@ class Entity extends Service {
     };
 
     let query = qs.stringify(params);
-
-    this._get(`entity.json?${query}`, cb);
-    return;
+    return this._get(`entity.json?${query}`);
   }
 }
 

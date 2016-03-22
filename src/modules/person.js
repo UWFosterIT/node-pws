@@ -11,8 +11,8 @@ class Person extends Service {
     if (opt.full) {
       full = '/full';
     }
-    this._get(`person/${opt.id}${full}.json`, cb);
-    return;
+
+    return this._get(`person/${opt.id}${full}.json`);
   }
 
   search(opt, cb) {
@@ -37,9 +37,7 @@ class Person extends Service {
     };
 
     let query = qs.stringify(params);
-
-    this._get(`person.json?${query}`, cb);
-    return;
+    return this._get(`person.json?${query}`);
   }
 }
 
