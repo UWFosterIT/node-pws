@@ -3,8 +3,8 @@ import request from 'request';
 class Service {
   constructor(config) {
     this.config = config;
-    this.log = config.log;
-    this.cache = config.cache;
+    this.log    = config.log;
+    this.cache  = config.cache;
   }
 
   _options(endpoint) {
@@ -25,16 +25,15 @@ class Service {
       if (this.config.cacheMode === 'wild') {
         this.log.debug(`wild -- ${options.uri}`);
         request.get(options, (err, response, body) => {
-          if (!err) {
-            if (response.statusCode === 404) {
-              // special case for 404 because the Student Web Service
-              // returns ugly HTML in the response body.
-              body = 'Not found.';
-            }
-            fulfill(this._buildResult(response, body));
-          } else {
+          if (err) {
             reject(err);
           }
+
+          // special case for 404 (vs. returning html)
+          if (response.statusCode === 404) {
+            body = 'Not found.';
+          }
+          fulfill(this._buildResult(response, body));
         });
       } else if (this.config.cacheMode === 'dryrun') {
         this.log.debug(`dryrun for ${options.uri}`);
@@ -45,16 +44,14 @@ class Service {
           fulfill(this._buildResult(response, body));
         } else {
           request.get(options, (err, response, body) => {
-            if (!err) {
-              if (response.statusCode === 404) {
-                // special case for 404 because the Student Web Service
-                // returns ugly HTML in the response body.
-                body = 'Not found.';
-              }
-              fulfill(this._buildResult(response, body));
-            } else {
+            if (err) {
               reject(err);
             }
+
+            if (response.statusCode === 404) {
+              body = 'Not found.';
+            }
+            fulfill(this._buildResult(response, body));
           });
         }
       } else if (this.config.cacheMode === 'record') {
@@ -66,18 +63,16 @@ class Service {
           fulfill(this._buildResult(response, body));
         } else {
           request.get(options, (err, response, body) => {
-            if (!err) {
-              if (response.statusCode === 200) {
-                this.cache.write(options.uriCache, body, true);
-              } else if (response.statusCode === 404) {
-                // special case for 404 because the Student Web Service
-                // returns ugly HTML in the response body.
-                body = 'Not found.';
-              }
-              fulfill(this._buildResult(response, body));
-            } else {
+            if (err) {
               reject(err);
             }
+
+            if (response.statusCode === 200) {
+              this.cache.write(options.uriCache, body, true);
+            } else if (response.statusCode === 404) {
+              body = 'Not found.';
+            }
+            fulfill(this._buildResult(response, body));
           });
         }
       }
