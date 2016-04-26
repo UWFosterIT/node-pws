@@ -22,7 +22,7 @@ describe('Entity', function () {
       };
 
       let result = await uwpws.entity.get(options);
-      expect(result.data.DisplayName).to.equal('UW IT SERVICE CENTER');
+      expect(result.data.DisplayName).to.equal('UWIT Service Center');
 
       // Using Promises directly
       //
