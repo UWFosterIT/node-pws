@@ -1,3 +1,4 @@
+/* global uwpws, config, expect */
 import '../setup/';
 
 describe('Entity', function () {
@@ -7,19 +8,15 @@ describe('Entity', function () {
   });
 
   describe('Get', () => {
-    it('should get a person entity', mochaAsync(async () => {
-      let options = {
-        id: 'ADA12DA10F7649B2A8861B14633F0A0A'
-      };
+    it('should get a person entity', async () => {
+      let options = {id: 'ADA12DA10F7649B2A8861B14633F0A0A'};
 
       let result = await uwpws.entity.get(options);
       expect(result.data.DisplayName).to.equal('BART SIMPSON');
-    }));
+    });
 
-    it('should get a non person entity', mochaAsync(async () => {
-      let options = {
-        id: '24CB6CD8AE3511D68CBC0004AC494FFE'
-      };
+    it('should get a non person entity', async () => {
+      let options = {id: '24CB6CD8AE3511D68CBC0004AC494FFE'};
 
       let result = await uwpws.entity.get(options);
       expect(result.data.DisplayName).to.equal('UWIT Service Center');
@@ -30,11 +27,11 @@ describe('Entity', function () {
       //   .then((result) => {
       //     expect(result.entity.DisplayName).to.equal('UW IT SERVICE CENTER');
       //   });
-    }));
+    });
   });
 
   describe('Searching by name', () => {
-    it('should page results',  mochaAsync(async () => {
+    it('should page results', async () => {
       let options = {
         name:  'marc',
         size:  10,
@@ -44,19 +41,19 @@ describe('Entity', function () {
       let result = await uwpws.entity.search(options);
       expect(result.data.Current.PageStart).to.equal('2');
       expect(result.data.Entities.length).to.equal(10);
-    }));
+    });
 
-    it('should give test entitties', mochaAsync(async () => {
+    it('should give test entities', async () => {
       let options = {
+        isTest: 'on',
         name:   'bart',
-        isTest: 'on'
       };
 
       let result = await uwpws.entity.search(options);
       expect(result.data.Entities.length).to.equal(10);
-    }));
+    });
 
-    it('should exlude people', mochaAsync(async () => {
+    it('should exclude people', async () => {
       let options = {
         name:         'TEST NEWSTD',
         onlyEntities: 'on'
@@ -65,10 +62,10 @@ describe('Entity', function () {
       let result = await uwpws.entity.search(options);
       expect(result.data.Entities.length).to.equal(0);
 
-      // now infer the opposite, which will inlcude people
+      // now infer the opposite, which will include people
       options.onlyEntities = 'off';
       let list = await uwpws.entity.search(options);
       expect(list.data.Entities.length).to.equal(10);
-    }));
+    });
   });
 });

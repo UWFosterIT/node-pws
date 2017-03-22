@@ -6,7 +6,7 @@ class Person extends Service {
     super(config);
   }
 
-  get(opt, cb) {
+  get(opt) {
     let full = '';
     if (opt.full) {
       full = '/full';
@@ -15,25 +15,36 @@ class Person extends Service {
     return this._get(`person/${opt.id}${full}.json`);
   }
 
-  search(opt, cb) {
+  search(opt) {
     let params = {
-      development_id:                 opt.devid         || '',
-      employee_id:                    opt.employeeid    || '',
-      uwregid:                        opt.regid         || '',
-      uwnetid:                        opt.netid         || '',
-      student_number:                 opt.studentNumber || '',
-      student_system_key:             opt.syskey        || '',
-      registered_surname:             opt.lastName      || '',
-      registered_first_middle_name:   opt.firstName     || '',
-      edupersonaffiliation_student:   opt.isStudent     || '',
-      edupersonaffiliation_staff:     opt.isStaff       || '',
-      edupersonaffiliation_faculty:   opt.isFaculty     || '',
-      edupersonaffiliation_employee:  opt.isEmployee    || '',
-      edupersonaffiliation_member:    opt.isMember      || '',
-      edupersonaffiliation_alum:      opt.isAlum        || '',
-      edupersonaffiliation_affiliate: opt.isAffiliate   || '',
-      page_size:                      opt.size          || '',
-      page_start:                     opt.start         || ''
+      /* eslint-disable camelcase */
+      address:                        opt.address          || '',
+      changed_since_date:             opt.changedSinceDate || '',
+      department:                     opt.department       || '',
+      development_id:                 opt.devid            || '',
+      edupersonaffiliation_affiliate: opt.isAffiliate      || '',
+      edupersonaffiliation_alum:      opt.isAlum           || '',
+      edupersonaffiliation_employee:  opt.isEmployee       || '',
+      edupersonaffiliation_faculty:   opt.isFaculty        || '',
+      edupersonaffiliation_member:    opt.isMember         || '',
+      edupersonaffiliation_staff:     opt.isStaff          || '',
+      edupersonaffiliation_student:   opt.isStudent        || '',
+      email:                          opt.email            || '',
+      employee_id:                    opt.employeeid       || '',
+      first_name:                     opt.firstName        || '',
+      home_dept:                      opt.homeDept         || '',
+      last_name:                      opt.lastName         || '',
+      mail_stop:                      opt.mailStop         || '',
+      page_size:                      opt.size             || '',
+      page_start:                     opt.start            || '',
+      phone_number:                   opt.phoneNumber      || '',
+      student_number:                 opt.studentNumber    || '',
+      student_system_key:             opt.syskey           || '',
+      title:                          opt.title            || '',
+      uwnetid:                        opt.netid            || '',
+      uwregid:                        opt.regid            || '',
+      verbose:                        opt.verbose          || '',
+      /* eslint-enable camelcase */
     };
 
     let query = qs.stringify(params);
