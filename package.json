@@ -1,6 +1,6 @@
 {
   "name": "uwpws",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Client Library for University of Washington's Person Web Service",
   "bugs:": {
     "url": "https://github.com/UWFosterIT/node-pws/issues"
