@@ -6,17 +6,20 @@ class Entity extends Service {
     super(config);
   }
 
-  get(opt, cb) {
+  get(opt) {
     return this._get(`entity/${opt.id}.json`);
   }
 
-  search(opt, cb) {
+  search(opt) {
     let params = {
-      display_name:   opt.name         || '',
-      is_test_entity: opt.isTest       || '',
-      only_entities:  opt.onlyEntities || '',
-      page_size:      opt.size         || '',
-      page_start:     opt.start        || ''
+      /* eslint-disable camelcase */
+      changed_since_date: opt.changedSinceDate || '',
+      display_name:       opt.name             || '',
+      is_test_entity:     opt.isTest           || '',
+      only_entities:      opt.onlyEntities     || '',
+      page_size:          opt.size             || '',
+      page_start:         opt.start            || ''
+      /* eslint-enable camelcase */
     };
 
     let query = qs.stringify(params);
