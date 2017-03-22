@@ -53,10 +53,11 @@
     "build": "./node_modules/.bin/babel --presets es2015 -d lib/node src --source-maps inline",
     "lint": "eslint test/**/*.js src/**/*.js",
     "test": "npm run build && ./node_modules/.bin/mocha --bail --reporter spec --compilers js:babel-register --require babel-polyfill test/unit/*.js",
-    "debug": "LOG_LEVEL=debug npm run build && ./node_modules/.bin/mocha --debug-brk --bail --reporter dot --compilers js:babel-register test/unit/*.js"
+    "debug": "LOG_LEVEL=debug npm run build && ./node_modules/.bin/mocha --debug-brk --bail --reporter dot --compilers js:babel-register test/unit/*.js",
+    "bumpver": "npm version --no-git-tag-version patch && git commit package.json -m 'Bumping version.'"
   },
   "engines": {
-    "node": ">= v0.12.0"
+    "node": ">= v6.9.1"
   },
   "license": "MIT"
 }
