@@ -1,4 +1,5 @@
 # UW Person Web Service
+
 This implements the [v2 UW Person Webservice endpoints](https://wiki.cac.washington.edu/display/pws/Person+Web+Service).  Each endpoint is queried using convenient options to build the final ``request``.
 
 This module assumes you have gone through all the required steps to get access and verified that access as [documented in the SWS wiki](https://wiki.cac.washington.edu/display/pws/Person+Web+Service).
@@ -87,12 +88,12 @@ The ``cacheMode`` can be set to any one of the following modes.  This uses the `
 - record: Loads files from the cache and saves new ones to the cache.
 
 ### Logging
-This module uses ``winston`` for all logging.  Set an environment variable to a valid log level such as ``LOG_LEVEL=debug node yourscript.js``.
+
+This module uses `log4js` for all logging. Set an environment variable to a valid log level such as `LOG_LEVEL=debug node script.js`. Alternatively, the log level can be set using the `logLevel` property of the `node-pws` config.
 
 ## Development
 
 Copy ``test/setup/config-sample.js`` to ``test/setup/config.js`` and edit values as needed. Use the ``npm`` commands indicated in ``package.json``.
 
-    npm build
     npm test
     npm lint
