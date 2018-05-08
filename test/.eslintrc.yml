@@ -1,0 +1,4 @@
+globals:
+  expect: true
+  uwpws: true
+  config: true

@@ -1,11 +1,21 @@
 let config = {
-  baseUrl:   'URL to Web Service',
+  baseUrl:   'https://wseval.s.uw.edu/identity/v2/',
   cacheExt:  '.json',
   cacheMode: 'wild',
-  cachePath: '/FULL/PATH/TO/where you want to cache http requests/',
-  cert:      '/FULL/PATH/TO/509Cert',
-  key:       '/FULL/PATH/TO/509Key',
-  logLevel:  'info',
+  cachePath: '.cache/',
+  certInfo:  {
+    file: {
+      cert: 'PATH TO LOCAL CERT',
+      key:  'PATH TO LOCAL KEY'
+    },
+    // s3: {
+    //   certBucket: 'CERT AWS BUCKET',
+    //   certKey:    'CERT AWS KEY',
+    //   keyBucket:  'KEY AWS BUCKET',
+    //   keyKey:     'KEY AWS KEY'
+    // }
+  },
+  logLevel: 'info',
 };
 
-export default config;
+module.exports = config;

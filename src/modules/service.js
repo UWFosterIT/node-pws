@@ -1,4 +1,4 @@
-import request from 'request';
+let request = require('request');
 
 class Service {
   constructor(config) {
@@ -110,4 +110,4 @@ class Service {
   }
 }
 
-export default Service;
+module.exports = Service;

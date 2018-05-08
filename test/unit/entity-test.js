@@ -1,10 +1,9 @@
-/* global uwpws, config, expect */
-import '../setup/';
+require('../setup/');
 
 describe('Entity', function () {
 
-  beforeEach(() => {
-    uwpws.initialize(config);
+  beforeEach(async () => {
+    await uwpws.initialize(config);
   });
 
   describe('Get', () => {
