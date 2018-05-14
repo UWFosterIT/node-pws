@@ -46,6 +46,7 @@ await uwpws.initialize(config);
 ```
 
 #### Then, search for a Person or Entity
+
 Search for a person, see ``src/modules/person`` for all the parameters you can use and ``test/unit/person-test.js`` for implementations. Notice, the Person and Entity searches are very similar, both have ``get`` and ``search`` functions.  Simply use ``uwpws.entity`` instead of ``uwpws.person``.
 
 ```JavaScript

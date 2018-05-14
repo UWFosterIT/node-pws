@@ -8,10 +8,13 @@
     "edupersonaffiliation",
     "employeeid",
     "netid",
+    "newstd",
     "regid",
     "syskey",
     "testkj",
     "uwca",
+    "uwfosterit",
+    "uwit",
     "uwnetid",
     "uwpws",
     "uwregid"
