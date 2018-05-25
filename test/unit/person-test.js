@@ -65,7 +65,6 @@ describe('Person', function () {
 
   async function searchByAffiliation(options) {
     let result = await uwpws.person.search(options);
-    //  console.log(result);
     expect(result.data.Persons.length).to.be.above(0);
   }
 
