@@ -1,10 +1,10 @@
-let AWS        = require('aws-sdk');
-let Entity     = require('./modules/entity');
-let fs         = require('fs');
-let log4js     = require('log4js');
+let AWS = require('aws-sdk');
+let Entity = require('./modules/entity');
+let fs = require('fs');
+let log4js = require('log4js');
 let MicroCache = require('micro-cache');
-let Person     = require('./modules/person');
-let util       = require('util');
+let Person = require('./modules/person');
+let util = require('util');
 
 let FileCertificate = {
   readCertificate: async (opts) => {
@@ -69,7 +69,7 @@ async function readCertificate(opts) {
 
 let UWPWS = {
   async initialize(options) {
-    let config = options;
+    let config = {...options};
     config.auth = await readCertificate(config.certInfo);
 
     log4js.configure({
