@@ -1,48 +1,48 @@
-require('../setup/');
+require('../setup');
 
 describe('Initializing the module', () => {
   it('should error when given missing cert or key', () => {
-    let path     = __dirname.replace('/unit', '/utils/');
-    let certFile = `${path  }dummy.crt`;
+    const path = __dirname.replace('/unit', '/utils/');
+    const certFile = `${path}dummy.crt`;
 
-    let invalid = {
+    const invalid = {
       both: {
         certInfo: {
           file: {
             cert: 'sup',
-            key:  'nope'
-          }
-        }
+            key: 'nope',
+          },
+        },
       },
       cert: {
         certInfo: {
           file: {
             cert: '',
-            key:  'sup'
-          }
-        }
+            key: 'sup',
+          },
+        },
       },
       key: {
         certInfo: {
           file: {
             cert: 'nope',
-            key:  ''
-          }
-        }
+            key: '',
+          },
+        },
       },
       nothing: {
         certInfo: {
           file: {
             cert: '',
-            key:  ''
-          }
-        }
+            key: '',
+          },
+        },
       },
       withCert: {
         certInfo: {
           cert: certFile,
-          key:  'sup'
-        }
+          key: 'sup',
+        },
       },
     };
 
@@ -51,21 +51,21 @@ describe('Initializing the module', () => {
       expect(uwpws.initialize(invalid.cert)).to.be.rejected,
       expect(uwpws.initialize(invalid.nothing)).to.be.rejected,
       expect(uwpws.initialize(invalid.withCert)).to.be.rejected,
-      expect(uwpws.initialize(invalid.both)).to.be.rejected
+      expect(uwpws.initialize(invalid.both)).to.be.rejected,
     ]);
   });
 });
 
 describe('Initializing the module with dummy certs', () => {
   it('should not error', async () => {
-    let path = __dirname.replace('/unit', '/utils/');
-    let valid = {
+    const path = __dirname.replace('/unit', '/utils/');
+    const valid = {
       certInfo: {
         file: {
           cert: `${path}/dummy.crt`,
-          key:  `${path}/dummy.key`
-        }
-      }
+          key: `${path}/dummy.key`,
+        },
+      },
     };
 
     return expect(uwpws.initialize(valid)).to.not.be.rejected.then((result) => {

@@ -1,33 +1,32 @@
-require('../setup/');
+require('../setup');
 
-describe('Person', function () {
-
+describe('Person', () => {
   beforeEach(async () => {
     await uwpws.initialize(config);
   });
 
   describe('Get', () => {
     it('should return a minimal person', async () => {
-      let options = {id: 'testkj1'};
+      const options = { id: 'testkj1' };
 
-      let result = await uwpws.person.get(options);
+      const result = await uwpws.person.get(options);
       expect(result.data.RegisteredName).to.equal('Helen Cleveland');
     });
 
     it('should return a full person', async () => {
-      let options = {
+      const options = {
         full: true,
-        id:   'testkj1',
+        id: 'testkj1',
       };
 
-      let result = await uwpws.person.get(options);
+      const result = await uwpws.person.get(options);
       expect(result.data.PersonAffiliations.EmployeePersonAffiliation);
     });
   });
 
   async function searchById(options) {
-    let result = await uwpws.person.search(options);
-    if (result.statusCode != 401) {
+    const result = await uwpws.person.search(options);
+    if (result.statusCode !== 401) {
       // 401 is only when using development_id
       return expect(result.data.Persons.length).to.be.above(0);
     }
@@ -38,85 +37,71 @@ describe('Person', function () {
   }
 
   describe('Searching by id', () => {
-    it('should work with a regid', async function () {
-      return await searchById({regid: '9136CCB8F66711D5BE060004AC494FFE'});
-    });
+    it('should work with a regid', async () => searchById({ regid: '9136CCB8F66711D5BE060004AC494FFE' }));
 
-    it('should work with a netid', async function () {
-      return await searchById({netid: 'javerage'});
-    });
+    it('should work with a netid', async () => searchById({ netid: 'javerage' }));
 
-    it('should work with an employee id', async function () {
-      return await searchById({employeeid: '000210620'});
-    });
+    it('should work with an employee id', async () => searchById({ employeeid: '000210620' }));
 
-    it('should work with student number', async function () {
-      return await searchById({studentNumber: '1313020'});
-    });
+    it('should work with student number', async () => searchById({ studentNumber: '1313020' }));
 
-    it('should work with system key', async function () {
-      return await searchById({syskey: '990003020'});
-    });
-
-    it('should work with development id', async function () {
-      return await searchById({devid: '9999999001'});
-    });
+    it('should work with system key', async () => searchById({ syskey: '990003020' }));
   });
 
   async function searchByAffiliation(options) {
-    let result = await uwpws.person.search(options);
+    const result = await uwpws.person.search(options);
     expect(result.data.Persons.length).to.be.above(0);
   }
 
-  let person = {
+  const person = {
     firstName: 'LISA',
-    lastName:  'SIMPSON'
+    lastName: 'SIMPSON',
   };
 
   describe('Searching by affiliation', () => {
-    it('should find a student', async function () {
+    it('should find a student', async () => {
       person.isStudent = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
 
-    it('should find a staff', async function () {
+    it('should find a staff', async () => {
       person.isStaff = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
 
-    it('should find faculty', async function () {
+    it('should find faculty', async () => {
       person.isFaculty = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
 
-    it('should find an employee', async function () {
+    it('should find an employee', async () => {
       person.isEmployee = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
 
-    it('should find a member', async function () {
+    it('should find a member', async () => {
       person.isMember = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
 
-    it('should find an alum', async function () {
+    it('should find an alum', async () => {
       person.isAlum = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
 
-    it('should find an affiliate', async function () {
+    it('should find an affiliate', async () => {
       person.isAffiliate = true;
-      return await searchByAffiliation(person);
+      return searchByAffiliation(person);
     });
   });
 
   describe('Searching by name', () => {
     it('should find a student', async () => {
-      let person = {
+      const anotherPerson = {
         firstName: 'BART',
-        lastName:  'SIMPSON'
+        lastName: 'SIMPSON',
       };
-      let result = await uwpws.person.search(person);
+      const result = await uwpws.person.search(anotherPerson);
       expect(result.data.Persons.length).to.be.above(0);
     });
   });
