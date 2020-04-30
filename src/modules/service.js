@@ -23,7 +23,7 @@ class Service {
     // record  load and save
     const options = this.options(endpoint);
     const { cacheMode } = this.config;
-    let response;
+    let response = {};
 
     if (cacheMode !== 'wild') {
       const body = this.cache.read(options.uriCache);
@@ -39,7 +39,13 @@ class Service {
 
 
     response = await got.get(options)
-      .catch((err) => err.response);
+      .catch((err) => {
+        if (!err.response) {
+          this.log.error(`${err.name}: ${err.message}`);
+          throw new Error('Unable to make GET request');
+        }
+        return err.response;
+      });
 
     this.log.debug(`GET -- ${options.url}`);
 

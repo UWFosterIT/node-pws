@@ -1,6 +1,6 @@
 {
   "name": "uwpws",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Client Library for University of Washington's Person Web Service",
   "bugs:": {
     "url": "https://github.com/UWFosterIT/node-pws/issues"
@@ -58,6 +58,7 @@
     "node": ">=12.10.0"
   },
   "eslintConfig": {
+    "root": true,
     "env": {
       "mocha": true,
       "node": true,
