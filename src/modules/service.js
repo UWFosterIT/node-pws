@@ -10,8 +10,10 @@ class Service {
   options(endpoint) {
     return {
       agent: false,
-      cert: this.config.auth.cert,
-      key: this.config.auth.key,
+      https: {
+        certificate: this.config.auth.cert,
+        key: this.config.auth.key,
+      },
       url: this.config.baseUrl + endpoint,
       uriCache: endpoint.replace(/\//g, ''),
     };
@@ -36,7 +38,6 @@ class Service {
         this.log.debug(`${cacheMode} cache miss for ${options.url}`);
       }
     }
-
 
     response = await got.get(options)
       .catch((err) => {

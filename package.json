@@ -1,6 +1,6 @@
 {
   "name": "uwpws",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "Client Library for University of Washington's Person Web Service",
   "bugs:": {
     "url": "https://github.com/UWFosterIT/node-pws/issues"
@@ -21,32 +21,32 @@
   "dependencies": {
     "@log4js-node/log4js-api": "^1.0.2",
     "@types/query-string": "^6.3.0",
-    "@types/request": "2.48.4",
-    "aws-sdk": "^2.664.0",
-    "got": "^11.0.2",
-    "lodash": "^4.17.15",
-    "micro-cache": "^2.3.0",
-    "query-string": "^6.12.1"
+    "@types/request": "2.48.7",
+    "aws-sdk": "^2.1008.0",
+    "got": "^11.8.2",
+    "lodash": "^4.17.21",
+    "micro-cache": "^3.0.3",
+    "query-string": "^7.0.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.11",
-    "@types/chai-as-promised": "^7.1.2",
-    "@types/debug": "4.1.5",
-    "@types/mocha": "^7.0.2",
-    "@types/sinon": "^9.0.0",
-    "@types/sinon-chai": "^3.2.4",
-    "chai": "^4.2.0",
+    "@types/chai": "^4.2.22",
+    "@types/chai-as-promised": "^7.1.4",
+    "@types/debug": "4.1.7",
+    "@types/mocha": "^9.0.0",
+    "@types/sinon": "^10.0.4",
+    "@types/sinon-chai": "^3.2.5",
+    "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "debug": "^4.1.1",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-chai-friendly": "^0.6.0",
-    "eslint-plugin-import": "^2.20.2",
+    "debug": "^4.3.2",
+    "eslint": "^7",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-security": "^1.4.0",
-    "log4js": "^6.2.1",
-    "mocha": "^7.1.2",
-    "sinon": "^9.0.2",
-    "sinon-chai": "^3.5.0"
+    "log4js": "^6.3.0",
+    "mocha": "^9.1.2",
+    "sinon": "^11.1.2",
+    "sinon-chai": "^3.7.0"
   },
   "scripts": {
     "lint": "eslint test/**/*.js src/**/*.js --fix; exit 0;",
