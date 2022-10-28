@@ -82,6 +82,8 @@ const UWPWS = {
     );
 
     config.log = log4js.getLogger('node-pws');
+    const { default: got } = await import('got')
+    config.got = got;
 
     this.person = new Person(config);
     this.entity = new Entity(config);

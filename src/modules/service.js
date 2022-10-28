@@ -1,20 +1,20 @@
-const got = require('got');
-
 class Service {
   constructor(config) {
     this.config = config;
     this.log = config.log;
     this.cache = config.cache;
+    this.got = config.got;
   }
 
   options(endpoint) {
     return {
-      agent: false,
-      https: {
-        certificate: this.config.auth.cert,
-        key: this.config.auth.key,
+      request: {
+        https: {
+          certificate: this.config.auth.cert,
+          key: this.config.auth.key,
+        },
+        url: this.config.baseUrl + endpoint,
       },
-      url: this.config.baseUrl + endpoint,
       uriCache: endpoint.replace(/\//g, ''),
     };
   }
@@ -33,25 +33,27 @@ class Service {
       if (body) {
         response.statusCode = 200;
         response.body = body;
-        this.log.debug(`${cacheMode} cache hit for ${options.url}`);
+        this.log.debug(`${cacheMode} cache hit for ${options.request.url}`);
       } else {
-        this.log.debug(`${cacheMode} cache miss for ${options.url}`);
+        this.log.debug(`${cacheMode} cache miss for ${options.request.url}`);
       }
     }
 
-    response = await got.get(options)
-      .catch((err) => {
-        if (!err.response) {
-          this.log.error(`${err.name}: ${err.message}`);
-          throw new Error('Unable to make GET request');
-        }
-        return err.response;
-      });
+    this.log.debug(`GET -- ${options.request.url}`);
 
-    this.log.debug(`GET -- ${options.url}`);
+    if (!response.body) {
+      response = await this.got.get(options.request)
+        .catch((err) => {
+          if (!err.response) {
+            this.log.error(`${err.name}: ${err.message}`);
+            throw new Error('Unable to make GET request');
+          }
+          return err.response;
+        });
 
-    if (cacheMode === 'record' && !!response.body) {
-      this.cache.write(options.uriCache, response.body, true);
+      if (cacheMode === 'record' && !response.body.errors) {
+        this.cache.write(options.uriCache, response.body, true);
+      }
     }
 
     return this.buildResult(response);
