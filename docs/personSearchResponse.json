@@ -1,0 +1,247 @@
+{
+  "result": "success",
+  "data": {
+    "TotalCount": 3477340,
+    "PageSize": "10",
+    "PageStart": "1",
+    "Persons": [
+      {
+        "Href": "/identity/v2/person/0000005A5B477D583A7A0403C6BF6FBD.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/0000005A5B477D583A7A0403C6BF6FBD.json",
+          "UWRegID": "0000005A5B477D583A7A0403C6BF6FBD",
+          "UWNetID": "hunchokt",
+          "DisplayName": "Kenny Ta",
+          "RegisteredName": "Kenny Ta"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/0000005A5B477D583A7A0403C6BF6FBD/full.json",
+          "UWRegID": "0000005A5B477D583A7A0403C6BF6FBD",
+          "UWNetID": "hunchokt",
+          "DisplayName": "Kenny Ta",
+          "RegisteredName": "Kenny Ta"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/00000246E9B6406FB4E5FF42C1AB867D.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/00000246E9B6406FB4E5FF42C1AB867D.json",
+          "UWRegID": "00000246E9B6406FB4E5FF42C1AB867D",
+          "UWNetID": null,
+          "DisplayName": "Megan Curran",
+          "RegisteredName": "Megan Curran"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/00000246E9B6406FB4E5FF42C1AB867D/full.json",
+          "UWRegID": "00000246E9B6406FB4E5FF42C1AB867D",
+          "UWNetID": null,
+          "DisplayName": "Megan Curran",
+          "RegisteredName": "Megan Curran"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/0000069119F5D0560C94C3374B0EFAC6.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/0000069119F5D0560C94C3374B0EFAC6.json",
+          "UWRegID": "0000069119F5D0560C94C3374B0EFAC6",
+          "UWNetID": null,
+          "DisplayName": "J Ermilo Mendoza",
+          "RegisteredName": "J Ermilo Mendoza"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/0000069119F5D0560C94C3374B0EFAC6/full.json",
+          "UWRegID": "0000069119F5D0560C94C3374B0EFAC6",
+          "UWNetID": null,
+          "DisplayName": "J Ermilo Mendoza",
+          "RegisteredName": "J Ermilo Mendoza"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/0000095525CF45B2A53DC4C38C1DF665.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/0000095525CF45B2A53DC4C38C1DF665.json",
+          "UWRegID": "0000095525CF45B2A53DC4C38C1DF665",
+          "UWNetID": "goherd55",
+          "DisplayName": "juan r stout",
+          "RegisteredName": "Juan R Stout"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/0000095525CF45B2A53DC4C38C1DF665/full.json",
+          "UWRegID": "0000095525CF45B2A53DC4C38C1DF665",
+          "UWNetID": "goherd55",
+          "DisplayName": "juan r stout",
+          "RegisteredName": "Juan R Stout"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/00001B794D5D84B56997F5E8D61228F2.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/00001B794D5D84B56997F5E8D61228F2.json",
+          "UWRegID": "00001B794D5D84B56997F5E8D61228F2",
+          "UWNetID": "bsallee",
+          "DisplayName": "Brandon Sallee",
+          "RegisteredName": "Brandon Sallee"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/00001B794D5D84B56997F5E8D61228F2/full.json",
+          "UWRegID": "00001B794D5D84B56997F5E8D61228F2",
+          "UWNetID": "bsallee",
+          "DisplayName": "Brandon Sallee",
+          "RegisteredName": "Brandon Sallee"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/0000230FF46C4DC7912DA13B4EDF82CF.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/0000230FF46C4DC7912DA13B4EDF82CF.json",
+          "UWRegID": "0000230FF46C4DC7912DA13B4EDF82CF",
+          "UWNetID": null,
+          "DisplayName": "Dwight H. Damon",
+          "RegisteredName": "Dwight H. Damon"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/0000230FF46C4DC7912DA13B4EDF82CF/full.json",
+          "UWRegID": "0000230FF46C4DC7912DA13B4EDF82CF",
+          "UWNetID": null,
+          "DisplayName": "Dwight H. Damon",
+          "RegisteredName": "Dwight H. Damon"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/000023B2AA8DA1500043152F37184812.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/000023B2AA8DA1500043152F37184812.json",
+          "UWRegID": "000023B2AA8DA1500043152F37184812",
+          "UWNetID": null,
+          "DisplayName": "Chao-An Chen",
+          "RegisteredName": "Chao-An Chen"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/000023B2AA8DA1500043152F37184812/full.json",
+          "UWRegID": "000023B2AA8DA1500043152F37184812",
+          "UWNetID": null,
+          "DisplayName": "Chao-An Chen",
+          "RegisteredName": "Chao-An Chen"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/000025F0C7254C30BA00DF8F634DD362.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/000025F0C7254C30BA00DF8F634DD362.json",
+          "UWRegID": "000025F0C7254C30BA00DF8F634DD362",
+          "UWNetID": null,
+          "DisplayName": "Thomas H. Rupp",
+          "RegisteredName": "Thomas H. Rupp"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/000025F0C7254C30BA00DF8F634DD362/full.json",
+          "UWRegID": "000025F0C7254C30BA00DF8F634DD362",
+          "UWNetID": null,
+          "DisplayName": "Thomas H. Rupp",
+          "RegisteredName": "Thomas H. Rupp"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/0000359FDDF34FD6A0638258E3FEC254.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/0000359FDDF34FD6A0638258E3FEC254.json",
+          "UWRegID": "0000359FDDF34FD6A0638258E3FEC254",
+          "UWNetID": "jemckee4",
+          "DisplayName": "Jeremiah Earl McKee",
+          "RegisteredName": "Jeremiah Earl McKee"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/0000359FDDF34FD6A0638258E3FEC254/full.json",
+          "UWRegID": "0000359FDDF34FD6A0638258E3FEC254",
+          "UWNetID": "jemckee4",
+          "DisplayName": "Jeremiah Earl McKee",
+          "RegisteredName": "Jeremiah Earl McKee"
+        }
+      },
+      {
+        "Href": "/identity/v2/person/00003AD3B8D98F58E9E5F9B2995CE8DF.json",
+        "PersonURI": {
+          "Href": "/identity/v2/person/00003AD3B8D98F58E9E5F9B2995CE8DF.json",
+          "UWRegID": "00003AD3B8D98F58E9E5F9B2995CE8DF",
+          "UWNetID": null,
+          "DisplayName": "Walter Ochieng",
+          "RegisteredName": "Walter Ochieng"
+        },
+        "PersonFullURI": {
+          "Href": "/identity/v2/person/00003AD3B8D98F58E9E5F9B2995CE8DF/full.json",
+          "UWRegID": "00003AD3B8D98F58E9E5F9B2995CE8DF",
+          "UWNetID": null,
+          "DisplayName": "Walter Ochieng",
+          "RegisteredName": "Walter Ochieng"
+        }
+      }
+    ],
+    "Current": {
+      "UWRegID": null,
+      "UWNetID": null,
+      "EmployeeID": null,
+      "StudentNumber": null,
+      "StudentSystemKey": null,
+      "DevelopmentID": null,
+      "LastName": null,
+      "FirstName": null,
+      "DisplayName": null,
+      "EduPersonAffiliationAffiliate": false,
+      "EduPersonAffiliationAlum": false,
+      "EduPersonAffiliationEmployee": false,
+      "EduPersonAffiliationFaculty": false,
+      "EduPersonAffiliationMember": false,
+      "EduPersonAffiliationStaff": false,
+      "EduPersonAffiliationStudent": false,
+      "ChangedSinceDate": null,
+      "PageStart": "1",
+      "PhoneNumber": null,
+      "MailStop": null,
+      "HomeDepartment": null,
+      "Department": null,
+      "Address": null,
+      "Title": null,
+      "Email": null,
+      "AlumAffiliationState": null,
+      "EmployeeAffiliationState": null,
+      "StudentAffiliationState": null,
+      "Verbose": false,
+      "PageSize": "10",
+      "Href": "/identity/v2/person.json?uwregid=&uwnetid=&employee_id=&student_number=&student_system_key=&development_id=&last_name=&first_name=&display_name=&edupersonaffiliation_student=&edupersonaffiliation_staff=&edupersonaffiliation_faculty=&edupersonaffiliation_employee=&edupersonaffiliation_member=&edupersonaffiliation_alum=&edupersonaffiliation_affiliate=&changed_since_date=&phone_number=&mail_stop=&home_dept=&department=&address=&title=&email=&alumAffiliationState=&employeeAffiliationState=&studentAffiliationState=&verbose=&page_size=10&page_start=1"
+    },
+    "Next": {
+      "UWRegID": null,
+      "UWNetID": null,
+      "EmployeeID": null,
+      "StudentNumber": null,
+      "StudentSystemKey": null,
+      "DevelopmentID": null,
+      "LastName": null,
+      "FirstName": null,
+      "DisplayName": null,
+      "EduPersonAffiliationAffiliate": false,
+      "EduPersonAffiliationAlum": false,
+      "EduPersonAffiliationEmployee": false,
+      "EduPersonAffiliationFaculty": false,
+      "EduPersonAffiliationMember": false,
+      "EduPersonAffiliationStaff": false,
+      "EduPersonAffiliationStudent": false,
+      "ChangedSinceDate": null,
+      "PageStart": "11",
+      "PhoneNumber": null,
+      "MailStop": null,
+      "HomeDepartment": null,
+      "Department": null,
+      "Address": null,
+      "Title": null,
+      "Email": null,
+      "AlumAffiliationState": null,
+      "EmployeeAffiliationState": null,
+      "StudentAffiliationState": null,
+      "Verbose": false,
+      "PageSize": "10",
+      "Href": "/identity/v2/person.json?uwregid=&uwnetid=&employee_id=&student_number=&student_system_key=&development_id=&last_name=&first_name=&display_name=&edupersonaffiliation_student=&edupersonaffiliation_staff=&edupersonaffiliation_faculty=&edupersonaffiliation_employee=&edupersonaffiliation_member=&edupersonaffiliation_alum=&edupersonaffiliation_affiliate=&changed_since_date=&phone_number=&mail_stop=&home_dept=&department=&address=&title=&email=&alumAffiliationState=&employeeAffiliationState=&studentAffiliationState=&verbose=&page_size=10&page_start=11"
+    },
+    "Previous": null
+  }
+}

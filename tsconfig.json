@@ -1,0 +1,17 @@
+{
+  "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "jest"
+    ],
+    "rootDir": "./src",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "ignoreDeprecations": "5.0"
+  },
+  "include": [
+    "src"
+  ]
+}

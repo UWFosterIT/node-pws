@@ -10,91 +10,105 @@ Note: Version 4.0.0 and later require Node 8.
 
 ### Installation
 
-    npm install uwpws
+    npm i uwpws
 
-### Examples
+### Configuration
 
-Import the module and set it's configuration.  You must set a ``cacheMode`` to tell the ``micro-cache`` module to save http requests or not to the filesystem (useful for development).  In production, set that mode to ``wild`` to force all requests to go over the internet.
+Configuration options are passed as an object to the constructor.
 
-#### First, set your config and initialize
+#### `organizationName`
 
-The certInfo object should only contain either a file or an s3 object. If you include both, only the file object will be picked up.
+The organization name is a string that identifies your organization and will appear in the headers of requests to the UW PWS API. This helps when working with UW IT to debug your application.
+
+#### `baseUrl`
+
+The URL of the PWS server. You can use the test or production server.
+
+#### `auth: { cert: 'cert data', key: 'key data' }`
+
+The Person Web Service requires that you pass a valid UW x509 client certificate with all requests. The data returned from the request is restricted to what is authorized for your cert.
+
+You can use the included certificate fetcher helpers to get cert and key data from local files, from an AWS S3 bucket, or you can create a custom fetcher.
+
+#### `uwPwsLogLevel`
+
+You can set the log level to `silly`, `trace`, `debug`, `info`, `warn`, `error`, or `fatal`.
 
 ```JavaScript
-const uwpws = require('uwpws');
+import UwPws from 'uwPws';
 
-let config = {
-  baseUrl:   'https://wseval.s.uw.edu/identity/v2/',
-  cacheExt:  '.json',
-  cacheMode: 'wild',
-  cachePath: '.cache/',
-  certInfo:  {
-    file: {
-      cert: 'PATH TO CERT',
-      key:  'PATH TO KEY'
+const config = {
+  organizationName: 'YOUR ORGANIZATION NAME',
+
+  baseUrl: 'https://ws.admin.washington.edu/student/v5/',
+
+  //uwPwsLogLevel: 'debug',
+
+  // Change 'certData' property to the return value of the
+  // 'readCertificate()' method if using a certFetcher helper.
+  certData: {
+    cert: 'PASS CERT STRING OR BUFFER HERE',
+    key: 'PASS CERT STRING OR BUFFER HERE',
+  },
+};
+
+const uwPws = new UwPws(config);
+
+const aPerson = {
+  firstName: 'BART',
+  lastName: 'SIMPSON',
+};
+const result = await uwPws.person.search(aPerson);
+const searchResults = result.data;
+
+console.log(searchResults);
+```
+
+For more use examples see the unit tests in `__tests__/*`.
+
+For a full list of all the supported endpoints and options see `src/endpoints/*`.
+
+If you find one that doesn't work or if an endpoint or option isn't supported, please create an issue.
+
+## Certificate Fetchers
+
+This package includes a helper module to fetch client certificates using different methods. The built-in fetchers includes support for AWS S3 and the local file system. You can also create custom certificate fetchers. See the `./__tests__/certFetcher-test.ts` file for a custom certFetcher example.
+
+```JavaScript
+import { CertFetcherManager } from '../src/index';
+
+// AWS S3 fetcher configuration options
+const s3Config = {
+  region: 'YOUR S3 REGION',
+  certBucket: 'CERTIFICATE BUCKET NAME',
+  certKey: 'CERTIFICATE KEY',
+  keyBucket: 'KEY BUCKET NAME',
+  keyKey: 'KEY KEY',
+}
+
+// Local file fetcher configuration options
+const localConfig = {
+      cert: 'PATH TO CERTIFICATE FILE',
+      key: 'PATH TO KEY FILE',
     }
-    // s3: {
-    //   certBucket: 'uwfosterit.certs',
-    //   certKey:    'laps_cert.cer',
-    //   keyBucket:  'uwfosterit.certs',
-    //   keyKey:     'laps_cert.key'
-    // }
-  },
-};
 
-await uwpws.initialize(config);
+const certFetcherManager = new CertFetcherManager();
+
+const s3Fetcher = certFetcherManager.getFetcher('s3');
+const s3CertData = await s3Fetcher.readCertificate(s3Config);
+
+const fileFetcher = certFetcherManager.getFetcher('file');
+const fileCertData = await fileFetcher.readCertificate(localConfig);
+
+// ... pass s3CertData or fileCertData to UwPws configuration object.
+
 ```
 
-#### Then, search for a Person or Entity
+## Endpoint Implementation
 
-Search for a person, see ``src/modules/person`` for all the parameters you can use and ``test/unit/person-test.js`` for implementations. Notice, the Person and Entity searches are very similar, both have ``get`` and ``search`` functions.  Simply use ``uwpws.entity`` instead of ``uwpws.person``.
-
-```JavaScript
-// Using Promises
-let options = {
-  id: '24CB6CD8AE3511D68CBC0004AC494FFE'
-};
-
-uwpws.entity.get(options)
-  .then((result) => {
-    console.log(result);
-    console.log(result.data.DisplayName);
-  },
-  (error) => {
-    console.log(error);
-  });
-```
-
-Or search for any entity that starts with the name of ``marc`` paging by 10 and starting on page 2.
-
-```JavaScript
-let options = {
-  name:  'marc',
-  size:  10,
-  start: 2
-};
-
-uwpws.entity.search(options)
-  .then((result) => {
-    console.log(result.data);
-  });
-```
-
-### Using a local cache
-
-The ``cacheMode`` can be set to any one of the following modes.  This uses the ``micro-cache`` node module as a local file system cache.
-
-- wild: all requests go out to the internet, don't load anything from cache, doesn't save anything.
-- dryrun: Loads files from cache if exists, does http calls when cache doesn't exist, doesn't save to the cache.
-- record: Loads files from the cache and saves new ones to the cache.
-
-### Logging
-
-This module uses `log4js` for all logging. Set an environment variable to a valid log level such as `LOG_LEVEL=debug node script.js`. Alternatively, the log level can be set using the `logLevel` property of the `node-pws` config.
-
-## Development
-
-Copy ``test/setup/config-sample.js`` to ``test/setup/config.js`` and edit values as needed. Use the ``npm`` commands indicated in ``package.json``.
-
-    npm test
-    npm lint
+Endpoint | Implementation
+---------|--------------
+Entity | UwPws.entity.get(options)
+Entity Search | UwPws.entity.search(options)
+Person | UwPws.person.get(options)
+Person Search | UwPws.person.search(options)
