@@ -1,6 +1,6 @@
 {
   "name": "uwpws",
-  "version": "5.0.0",
+  "version": "5.0.4",
   "description": "Client Library for University of Washington's Person Web Service",
   "bugs:": {
     "url": "https://github.com/UWFosterIT/node-pws/issues"
@@ -10,7 +10,11 @@
     "url": "https://github.com/UWFosterIT/node-pws/"
   },
   "author": "Kevin Coleman",
-  "main": "./src/index.js",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "uw",
     "person",

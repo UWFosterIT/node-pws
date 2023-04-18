@@ -1,6 +1,6 @@
-import Endpoint from '../core/endpoint';
-import type { IEntityResponse } from '../entities/IEntity';
-import type { ISearchEntityResponse } from '../entities/ISearchEntity';
+import Endpoint from '../core/endpoint.js';
+import type { IEntityResponse } from '../entities/IEntity.js';
+import type { ISearchEntityResponse } from '../entities/ISearchEntity.js';
 
 export interface IEntityGetOptions {
   id: string;

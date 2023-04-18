@@ -1,7 +1,7 @@
-import Endpoint from '../core/endpoint';
-import type { IFullPersonResponse } from '../entities/IFullPerson';
-import type { IPersonResponse } from '../entities/IPerson';
-import type { ISearchPersonResponse } from '../entities/ISearchPerson';
+import Endpoint from '../core/endpoint.js';
+import type { IFullPersonResponse } from '../entities/IFullPerson.js';
+import type { IPersonResponse } from '../entities/IPerson.js';
+import type { ISearchPersonResponse } from '../entities/ISearchPerson.js';
 
 export interface IPersonGetOptions {
   id: string;

@@ -8,7 +8,7 @@
     "rootDir": "./src",
     "resolveJsonModule": true,
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "ignoreDeprecations": "5.0"
   },
   "include": [

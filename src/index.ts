@@ -7,7 +7,7 @@ import Entity from './endpoints/entity.js';
 export { CertFetcherManager } from './certFetcher/cert-fetcher-manager.js';
 export { ICertFetcher } from './certFetcher/ICertFetcher.js';
 export { IApiError } from './modules/IService.js';
-export { IUwPwsOptions } from './IUwPwsOptions';
+export { IUwPwsOptions } from './IUwPwsOptions.js';
 
 enum LogLevel {
   silly,
