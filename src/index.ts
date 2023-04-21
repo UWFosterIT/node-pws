@@ -34,7 +34,11 @@ export class UwPws {
   entity: Entity;
 
   constructor(options: IUwPwsOptions) {
-    this.log = new Logger({ name: this.constructor.name, minLevel: LogLevel[options.logLevel || 'error'], ...logSettings });
+    this.log = new Logger({
+      name: this.constructor.name,
+      minLevel: LogLevel[options.uwPwsLogLevel as keyof typeof LogLevel || 'info'],
+      ...logSettings,
+    });
 
     this.service = new Service({
       organizationName: options.organizationName,

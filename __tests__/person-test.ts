@@ -2,7 +2,6 @@ import { ICertFetcher } from '../src/certFetcher/ICertFetcher';
 import { IPersonResponse } from '../src/entities/IPerson';
 import { IFullPersonResponse } from '../src/entities/IFullPerson';
 import { UwPws, CertFetcherManager, IApiError } from '../src/index';
-import { LogLevel } from '../src/IUwPwsOptions';
 
 import config from './setup/config';
 import { IPersonSearchOptions } from '../src/endpoints/person';
@@ -37,7 +36,7 @@ describe('Person', () => {
       organizationName: config.organizationName,
       baseUrl: config.baseUrl,
       certData,
-      logLevel: config.uwPwsLogLevel as LogLevel,
+      uwPwsLogLevel: config.uwPwsLogLevel,
     });
   });
 

@@ -15,7 +15,7 @@ const config = {
     //   keyKey:     'KEY AWS KEY'
     // }
   },
-  logLevel: 'info',
+  uwPwsLogLevel: 'info',
 };
 
 module.exports = config;

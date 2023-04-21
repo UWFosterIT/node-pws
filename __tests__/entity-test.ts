@@ -2,7 +2,6 @@ import { ICertFetcher } from '../src/certFetcher/ICertFetcher';
 import { IEntityResponse } from '../src/entities/IEntity';
 import { ISearchEntityResponse } from '../src/entities/ISearchEntity';
 import { UwPws, CertFetcherManager } from '../src/index';
-import { LogLevel } from '../src/IUwPwsOptions';
 
 import config from './setup/config';
 
@@ -21,7 +20,7 @@ describe('Entity', () => {
       organizationName: config.organizationName,
       baseUrl: config.baseUrl,
       certData,
-      logLevel: config.uwPwsLogLevel as LogLevel,
+      uwPwsLogLevel: config.uwPwsLogLevel,
     });
   });
 

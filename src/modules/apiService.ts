@@ -36,9 +36,9 @@ export default class Service {
       },
     ) as PlainResponse;
 
-    this.log.info(`GET -- ${response.url}`);
+    this.log.debug(`GET -- ${response.url}`);
 
-    this.log.debug(`body: ${response.body}`);
+    this.log.silly(`body: ${response.body}`);
 
     if (!isResponseOk(response)) {
       this.log.error(response.statusMessage);

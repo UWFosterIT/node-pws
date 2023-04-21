@@ -9,7 +9,9 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "outDir": "./dist/esm",
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "5.0",
+    "declaration": true,
+    "declarationMap": true,
   },
   "include": [
     "src"

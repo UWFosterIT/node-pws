@@ -1,5 +1,3 @@
-export type LogLevel = 'silly' | 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal';
-
 export interface IUwPwsOptions {
   organizationName: string,
   baseUrl: string,
@@ -7,5 +5,5 @@ export interface IUwPwsOptions {
     cert: string | Buffer,
     key: string | Buffer,
   },
-  logLevel?: LogLevel,
+  uwPwsLogLevel?: string,
 }

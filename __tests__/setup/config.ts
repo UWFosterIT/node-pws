@@ -1,7 +1,7 @@
 export default {
   organizationName: 'UW Foster IT',
   baseUrl: 'https://wseval.s.uw.edu/identity/v2/',
-  uwPwsLogLevel: 'debug',
+  uwPwsLogLevel: 'info',
   certInfo: {
     region: 'us-west-1',
     certBucket: 'uwfosterit.certs',
