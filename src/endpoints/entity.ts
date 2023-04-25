@@ -17,7 +17,13 @@ export interface IEntitySearchOptions {
 
 class Entity extends Endpoint {
   async get(opt: IEntityGetOptions) {
-    return this.service.get<IEntityResponse>(`entity/${opt.id}.json`);
+    const result = await this.service.get<IEntityResponse>(`entity/${opt.id}.json`);
+
+    if (Endpoint.isApiError(result.data)) {
+      throw new Error(result.data.description);
+    }
+
+    return result.data;
   }
 
   async search(opt: IEntitySearchOptions) {
@@ -31,7 +37,13 @@ class Entity extends Endpoint {
     };
 
     const query = new URLSearchParams(params);
-    return this.service.get<ISearchEntityResponse>(`entity.json?${query}`);
+    const result = await this.service.get<ISearchEntityResponse>(`entity.json?${query}`);
+
+    if (Endpoint.isApiError(result.data)) {
+      throw new Error(result.data.description);
+    }
+
+    return result.data;
   }
 }
 

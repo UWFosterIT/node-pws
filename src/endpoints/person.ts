@@ -40,16 +40,21 @@ export interface IPersonSearchOptions {
 type ResponseType<T> = T extends true ? IFullPersonResponse : IPersonResponse;
 
 class Person extends Endpoint {
-  get(opt: IPersonGetOptions) {
+  async get(opt: IPersonGetOptions) {
     let full = '';
     if (opt.full) {
       full = '/full';
     }
+    const result = await this.service.get<ResponseType<typeof opt.full>>(`person/${opt.id}${full}.json`);
 
-    return this.service.get<ResponseType<typeof opt.full>>(`person/${opt.id}${full}.json`);
+    if (Endpoint.isApiError(result.data)) {
+      throw new Error(result.data.description);
+    }
+
+    return result.data;
   }
 
-  search(opt: IPersonSearchOptions) {
+  async search(opt: IPersonSearchOptions) {
     const params = {
       address: opt.address || '',
       changed_since_date: opt.changedSinceDate || '',
@@ -80,7 +85,14 @@ class Person extends Endpoint {
     };
 
     const query = new URLSearchParams(params);
-    return this.service.get<ISearchPersonResponse>(`person.json?${query}`);
+
+    const result = await this.service.get<ISearchPersonResponse>(`person.json?${query}`);
+
+    if (Endpoint.isApiError(result.data)) {
+      throw new Error(result.data.description);
+    }
+
+    return result.data;
   }
 }
 
